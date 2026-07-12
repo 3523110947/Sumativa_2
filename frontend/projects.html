@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow - Proyectos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">📋 TaskFlow</div>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+        <a href="projects.html" class="nav-item active">
+            <i class="fas fa-folder"></i> Proyectos
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i> Perfil
+        </a>
+        <hr />
+        <a href="#" class="nav-item" id="logoutBtn" style="color: #EF4444;">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="fw-bold">Proyectos</h4>
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary-custom" onclick="openCreateProjectModal()">
+                    <i class="fas fa-plus"></i> Nuevo Proyecto
+                </button>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="row g-2 mb-3">
+            <div class="col-md-6">
+                <input type="text" id="searchProjects" class="form-control-custom" placeholder="Buscar proyectos..." />
+            </div>
+            <div class="col-md-3">
+                <select id="filterStatus" class="form-control-custom">
+                    <option value="all">Todos los estados</option>
+                    <option value="active">Activos</option>
+                    <option value="archived">Archivados</option>
+                    <option value="completed">Completados</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Lista de proyectos -->
+        <div id="projectsList">
+            <p class="text-muted text-center py-3">Cargando proyectos...</p>
+        </div>
+    </div>
+
+    <!-- Modal de proyecto -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Nuevo Proyecto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="projectForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label-custom">Nombre *</label>
+                            <input type="text" id="projectName" class="form-control-custom" placeholder="Nombre del proyecto" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Descripción</label>
+                            <textarea id="projectDescription" class="form-control-custom" rows="3" placeholder="Descripción del proyecto"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Fecha Límite</label>
+                            <input type="date" id="projectDueDate" class="form-control-custom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Estado</label>
+                            <select id="projectStatus" class="form-control-custom">
+                                <option value="active">Activo</option>
+                                <option value="archived">Archivado</option>
+                                <option value="completed">Completado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary-custom">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>
